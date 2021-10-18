@@ -1,37 +1,66 @@
-import { Component } from "react"
+import { Component, Fragment } from "react"
+import { Spinner } from "../spinner/spinner"
 
 import SwapiService from "../../services/swapi-service"
 
+import errorIcon from './death-star.png'
 import "./random-planet.css"
 
 export default class RandomPlanet extends Component {
+    
+    _updateDelay = 10000
+    
+    SWAPI = new SwapiService()
 
     constructor() {
         super()
-        this.SWAPI = new SwapiService()
         this.updatePlanet()
+        this.interval = setInterval(this.updatePlanet, this._updateDelay)
+        // clearInterval(this.interval)
     }
 
     state = {
-        planet: {}
+        planet: {},
+        loading: true,
+        error: false
     }
 
-    updatePlanet() {
-        const id = Math.floor(Math.random() * 25) + 2
-        this.SWAPI.getPlanet(id).then(this.onPlanetLoaded)
+    updatePlanet = () => {
+        const id = Math.floor(Math.random() * 25) + 1
+        this.SWAPI.getPlanet(id).then(this.onPlanetLoaded).catch(this.onError)
     }
 
     onPlanetLoaded = planet => {
-        this.setState({ planet })
+        this.setState({ planet, loading: false, error: false })
     }
 
-    render() {
+    onError = () => this.setState({ error: true, loading: false })
 
-        const { planet: { id, name, population, rotationPeriod, diameter } } = this.state
-        console.log(id)
+    render() {
+        const { planet, loading, error } = this.state
+
+        const displayData = !(loading || error)
+
         return (
-        <div className="random-planet jumbotron rounded">
-            <img className="planet-image" src={`https://starwars-visualguide.com/assets/img/planets/${id}.jpg`} />
+            <div className="random-planet jumbotron rounded">
+                { error && <ErrorIndicator/> }
+                { loading && <Spinner/> }
+                { displayData && <PlanetForm planet={planet}/> }
+            </div>
+        )
+    }
+}
+
+const PlanetForm = ({ planet }) => {
+    const { id, name, population, rotationPeriod, diameter } = planet
+
+    return (
+        <Fragment>
+            <img 
+                alt="planet" 
+                className="planet-image" 
+                src={`https://starwars-visualguide.com/assets/img/planets/${id}.jpg`} 
+            />
             <div>
                 <h4>{name}</h4>
                 <ul className="list-group list-group-flush">
@@ -49,7 +78,15 @@ export default class RandomPlanet extends Component {
                     </li>
                 </ul>
             </div>
-        </div>
-        )
-    }
+        </Fragment>
+    )
 }
+
+const ErrorIndicator = () => (
+    <div className="error-indicator">
+        <img src={errorIcon} alt="error icon"/>
+        <span className="boom">BOOM!</span>
+        <span>something has gone wrong</span>
+        <span>(but we already sent droids to fix it)</span>
+    </div>
+)

@@ -42,7 +42,6 @@ export default class SwapiService {
     }
 
     _extractId(item) {
-        console.log(item.url)
         const pattern = /\d+/ // /\/([0 - 9]*)\/$/
         return item.url.match(pattern)
     }
