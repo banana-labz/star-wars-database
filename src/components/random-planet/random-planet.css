@@ -21,19 +21,3 @@
 .random-planet .list-group-item .term {
     margin-right: .5rem;
 }
-
-.error-indicator {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    color: rgb(255, 233, 32);
-} 
-  
-.error-indicator img {
-    margin-bottom: 1rem;
-}
-  
-.error-indicator .boom {
-    font-size: 1.7
-}

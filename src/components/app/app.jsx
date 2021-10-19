@@ -1,21 +1,36 @@
-import { Header } from '../header/header'
-import RandomPlanet from '../random-planet/random-planet'
-import ItemList from '../item-list/item-list'
-import PersonDetails from '../person-details/person-details'
+import { Component } from "react"
+import { Header } from "../header/header"
+
+import RandomPlanet from "../random-planet/random-planet"
+import PeoplePage from "../people-page/people-page"
 
 import "./app.css"
 
-export const App = () => (
-    <div>
-        <Header />
-        <RandomPlanet />
-        <div className="row mb2">
-            <div className="col-md-6">
-            <ItemList />
+export default class App extends Component {
+
+    state = {
+        displayPlanet: true
+    }
+
+    render() {
+        const { displayPlanet } = this.state
+
+        const planet = displayPlanet ? <RandomPlanet/> : null
+
+        return (
+            <div>
+                <Header />
+                { planet }
+                <button
+                    className="toggle-planet btn btn-warning btn-lg"
+                    onClick={() => this.setState(({ displayPlanet }) => {
+                        return { displayPlanet: !displayPlanet }
+                    })}
+                >
+                    Toggle
+                </button>
+                <PeoplePage/>
             </div>
-            <div className="col-md-6">
-            <PersonDetails />
-            </div>
-        </div>
-    </div>
-)
+        )
+    }
+}
