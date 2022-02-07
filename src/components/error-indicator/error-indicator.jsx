@@ -1,4 +1,4 @@
-import icon from './death-star.png'
+import icon from "./death-star.png"
 import "./error-indicator.css"
 
 export default ErrorIndicator = () => (
