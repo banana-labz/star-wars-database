@@ -14,7 +14,7 @@ import {
     SecretPage 
 } from "../pages"
 
-import { SwapiServiceProvider } from "../swapi-service-context"
+import { ServiceProvider } from "../service-context"
 
 import "./app.css"
 
@@ -40,7 +40,7 @@ export default class App extends Component {
 
         return (
             <ErrorBoundry>
-                <SwapiServiceProvider value={this.state.swapi}>
+                <ServiceProvider value={this.state.swapi}>
                     <Router>
                         <div className="stardb-app">
                             <Header onServiceChange={this.onServiceChange}/>
@@ -57,7 +57,7 @@ export default class App extends Component {
                             </Switch>
                         </div>
                     </Router>
-                </SwapiServiceProvider>
+                </ServiceProvider>
             </ErrorBoundry>
         )
     }

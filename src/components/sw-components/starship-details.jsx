@@ -1,5 +1,5 @@
 import ItemDetails, { Record } from "../item-details"
-import { withSwapiService } from "../hoc-helpers"
+import { withService } from "../hoc-helpers"
 
 const StarshipDetails = props => (
     <ItemDetails {...props}>
@@ -9,9 +9,9 @@ const StarshipDetails = props => (
     </ItemDetails>
 )
 
-const mapMethodsToProps = swapi => ({
-    getData: swapi.getStarship,
-    getImageUrl: swapi.getStarshipImage
+const mapMethodsToProps = serv => ({
+    getData: serv.getStarship,
+    getImageUrl: serv.getStarshipImage
 })
 
-export default withSwapiService(mapMethodsToProps)(StarshipDetails)
+export default withService(mapMethodsToProps)(StarshipDetails)

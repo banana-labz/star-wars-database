@@ -1,7 +1,7 @@
 import ItemList from "../item-list"
 import {
     withData,
-    withSwapiService,
+    withService,
     withChildFunction,
     compose 
 } from "../hoc-helpers"
@@ -9,19 +9,19 @@ import {
 const wrapName = ({ name }) => <span>{name}</span>
 
 const PersonList = compose(
-    withSwapiService(swapi => ({ getData: swapi.getAllPeople })),
+    withService(serv => ({ getData: serv.getAllPeople })),
     withData,
     withChildFunction(wrapName)
 )(ItemList)
 
 const PlanetList = compose(
-    withSwapiService(swapi => ({ getData: swapi.getAllPlanets })),
+    withService(serv => ({ getData: serv.getAllPlanets })),
     withData,
     withChildFunction(wrapName)
 )(ItemList)
 
 const StarshipList = compose(
-    withSwapiService(swapi => ({ getData: swapi.getAllStarships })),
+    withService(serv => ({ getData: serv.getAllStarships })),
     withData,
     withChildFunction(({ model, name}) => <span>{name}({model})</span>)
 )(ItemList)

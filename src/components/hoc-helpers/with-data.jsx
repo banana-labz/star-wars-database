@@ -2,7 +2,7 @@ import { Component } from 'react'
 import Spinner from '../spinner'
 import ErrorIndicator from '../error-indicator'
 
-export default withData = View => class extends Component {
+const withData = View => class extends Component {
     state = {
         data: null,
         loading: true,
@@ -40,3 +40,5 @@ export default withData = View => class extends Component {
         return <View {...this.props} data={data}/>
     }
 }
+
+export default withData

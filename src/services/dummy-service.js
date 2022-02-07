@@ -49,12 +49,12 @@ export default class DummyService {
         }
     ]
 
-    getAllPeople = async () => _people
-    getPerson = async () => _people[0]
-    getAllPlanets = async () => _planets
-    getPlanet = async () => _planets[0]
-    getAllStarships = async () => _starships
-    getStarship = async () => _starships[0]
+    getAllPeople = async () => this._people
+    getPerson = async () => this._people[0]
+    getAllPlanets = async () => this._planets
+    getPlanet = async () => this._planets[0]
+    getAllStarships = async () => this._starships
+    getStarship = async () => this._starships[0]
     getPersonImage = () => "https://placeimg.com/400/500/people"
     getStarshipImage = () => "https://placeimg.com/600/400/tech"
     getPlanetImage = () => "https://placeimg.com/400/400/nature"

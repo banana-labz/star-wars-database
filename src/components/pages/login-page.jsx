@@ -1,6 +1,6 @@
 import { Redirect } from "react-router-dom"
 
-export default LoginPage = ({ isVerified, onLogin }) => (
+const LoginPage = ({ isVerified, onLogin }) => (
     isVerified ? <Redirect to="/"/> :
     <div className="jumbotron">
         <p>Log in to see THE secret page!</p>
@@ -11,3 +11,5 @@ export default LoginPage = ({ isVerified, onLogin }) => (
         </button>
     </div>
 )
+
+export default LoginPage

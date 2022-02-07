@@ -1,7 +1,7 @@
 import React from 'react'
 import { ServiceConsumer } from '../service-context'
 
-export default withService = mapMethodsToProps => Wrapped => props => (
+const withService = mapMethodsToProps => Wrapped => props => (
     <ServiceConsumer>{
         service => {
             const serviceProps = mapMethodsToProps(service)
@@ -9,3 +9,5 @@ export default withService = mapMethodsToProps => Wrapped => props => (
         }
     }</ServiceConsumer>
 )
+
+export default withService

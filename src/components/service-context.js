@@ -1,11 +1,8 @@
 import { createContext } from "react"
 
 const { 
-    Provider: SwapiServiceProvider,
-    Consumer: SwapiServiceConsumer
+    Provider: ServiceProvider, 
+    Consumer: ServiceConsumer 
 } = createContext()
 
-export {
-    SwapiServiceProvider,
-    SwapiServiceConsumer
-}
+export { ServiceProvider, ServiceConsumer }

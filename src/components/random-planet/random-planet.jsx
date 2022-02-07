@@ -1,5 +1,3 @@
-const URL_BASE = "https://starwars-visualguide.com/assets/img/planets/"
-
 import { Component, Fragment } from "react"
 import PropTypes from "prop-types"
 
@@ -8,6 +6,8 @@ import ErrorIndicator from "../error-indicator"
 import SwapiService from "../../services/swapi-service"
 
 import "./random-planet.css"
+
+const URL_BASE = "https://starwars-visualguide.com/assets/img/planets/"
 
 const PlanetView = ({ planet }) => {
     const { id, name, population, rotationPeriod, diameter } = planet

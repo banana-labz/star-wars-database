@@ -1,4 +1,4 @@
-import { Component } from "react"
+import { Component, Children, cloneElement } from "react"
 
 import "./item-details.css"
 
@@ -58,8 +58,8 @@ export default class ItemDetails extends Component {
                 <div className="card-body">
                     <h4>{name}</h4>
                     <ul className="list-group list-group-flush">{
-                        React.Children.map(this.props.children, child => 
-                            React.cloneElement(child, { item })
+                        Children.map(this.props.children, child => 
+                            cloneElement(child, { item })
                         )
                     }</ul>
                 </div>

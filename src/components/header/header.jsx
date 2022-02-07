@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import "./header.css"
 
-export default Header = ({ onServiceChange }) => (
+const Header = ({ onServiceChange }) => (
     <div className="header d-flex">
         <h3><Link to="/" className="header-main-text">Star DB</Link></h3>
         <ul className="d-flex">
@@ -18,6 +18,7 @@ export default Header = ({ onServiceChange }) => (
     </div>
 )
 
+export default Header
 /*
 <div className="header">
     <h3>
