@@ -1,9 +1,7 @@
 export default class SwapiService {
 
-    _baseURL = "https://swapi.dev/api"
-  
-    async getResource(url) {
-        const res = await fetch(`${this._baseURL}${url}`)
+    getResource = async url => {
+        const res = await fetch(`${this._infoBase}${url}`)
     
         if (!res.ok) {
             throw new Error(`Could not fetch ${url}, received ${res.status}`)
@@ -11,40 +9,42 @@ export default class SwapiService {
         return await res.json()
     }
   
-    async getAllPeople() {
-        const res = await this.getResource(`/people/`)
+    getAllPeople = async () => {
+        const res = await this.getResource("/people/")
         return res.results.map(this._transformPerson)
     }
+    getAllPlanets = async () => {
+        const res = await this.getResource("/planets/")
+        return res.results.map(this._transformPlanet)
+    }
+    getAllStarships = async () => {
+        const res = await this.getResource("/starships/")
+        return res.results.map(this._transformStarship)
+    }
   
-    async getPerson(id) {
+    getPerson = async id => {
         const person = await this.getResource(`/people/${id}/`)
         return this._transformPerson(person)
     }
-  
-    async getAllPlanets() {
-        const res = await this.getResource(`/planets/`)
-        return res.results.map(this._transormPlanet)
-    }
-  
-    async getPlanet(id) {
+    getPlanet = async id => {
         const planet = await this.getResource(`/planets/${id}/`)
-        return this._transormPlanet(planet)
+        return this._transformPlanet(planet)
+    }
+    getStarship = async id => {
+        const starship = await this.getResource(`/starships/${id}/`)
+        return this._transformStarship(starship)
     }
   
-    async getAllStarships() {
-        const res = await this.getResource(`/starships/`)
-        return res.results
-    }
+    getPersonImage = ({ id }) => `${this._imageBase}/characters/${id}.jpg`
+    getStarshipImage = ({ id }) => `${this._imageBase}/starships/${id}.jpg`
+    getPlanetImage = ({ id }) => `${this._imageBase}/planets/${id}.jpg`
   
-    async getStarship(id) {
-        const ship = await this.getResource(`/starships/${id}/`)
-        return this._transormPlanet(ship)
-    }
+    // private section
 
-    _extractId = item => {
-        const pattern = /\d+/ // /\/([0 - 9]*)\/$/
-        return item.url.match(pattern)
-    }
+    _infoBase = "https://swapi.dev/api"
+    _imageBase = "https://starwars-visualguide.com/assets/img"
+
+    _extractId = item => item.url.match(/\d+/)
 
     _transormPlanet = planet => {
         return {
