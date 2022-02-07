@@ -1,7 +1,7 @@
 import icon from './death-star.png'
 import "./error-indicator.css"
 
-export const ErrorIndicator = () => (
+export default ErrorIndicator = () => (
     <div className="error-indicator">
         <img src={icon} alt="error icon"/>
         <span className="boom">BOOM!</span>
