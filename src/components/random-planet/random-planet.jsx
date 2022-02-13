@@ -8,7 +8,6 @@ import { withService } from "../hoc-helpers"
 import "./random-planet.css"
 
 const PlanetView = ({ planet }) => {
-    console.log(planet)
     const { image, name, population, rotationPeriod, diameter } = planet
 
     return (
@@ -50,10 +49,7 @@ class RandomPlanet extends Component {
 
     componentWillUnmount() { clearInterval(this.interval) }
 
-    onPlanetLoaded = planet => {
-        //console.log(planet)
-        this.setState({ planet, loading: false, error: false })
-    }
+    onPlanetLoaded = planet => this.setState({ planet, loading: false, error: false })
     onError = err => {
         //console.log(err)
         this.setState({ error: true, loading: false })
