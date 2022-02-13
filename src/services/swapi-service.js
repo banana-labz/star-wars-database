@@ -1,5 +1,56 @@
 export default class SwapiService {
 
+    // private section
+
+    _infoBase = "https://swapi.dev/api"
+    _imageBase = "https://starwars-visualguide.com/assets/img"
+
+    _extractId = item => ~~item.url.match(/\d+/)[0]
+
+    _getPersonImage = id => `${this._imageBase}/characters/${id}.jpg`
+    _getStarshipImage = id => `${this._imageBase}/starships/${id}.jpg`
+    _getPlanetImage = id => `${this._imageBase}/planets/${id}.jpg`
+
+    _transformPlanet = planet => {
+        const id = this._extractId(planet)
+        return {
+            id: id,
+            image: this._getPlanetImage(id),
+            name: planet.name,
+            population: planet.population,
+            rotationPeriod: planet.rotation_period,
+            diameter: planet.diameter
+        }
+    }
+    _transformStarship = starship => {
+        const id = this._extractId(starship)
+        return {
+            id: id,
+            image: this._getStarshipImage(id),
+            name: starship.name,
+            model: starship.model,
+            manufacturer: starship.manufacturer,
+            costInCredits: starship.costInCredits,
+            length: starship.length,
+            crew: starship.crew,
+            passengers: starship.passengers,
+            cargoCapacity: starship.cargoCapacity,
+        }
+    }
+    _transformPerson = person => {
+        const id = this._extractId(person)
+        return {
+            id: id,
+            image: this._getPersonImage(id),
+            name: person.name,
+            gender: person.gender,
+            birthYear: person.birth_year,
+            eyeColor: person.eye_color
+        }
+    }
+
+    // public section
+
     getResource = async url => {
         const res = await fetch(`${this._infoBase}${url}`)
     
@@ -33,50 +84,5 @@ export default class SwapiService {
     getStarship = async id => {
         const starship = await this.getResource(`/starships/${id}/`)
         return this._transformStarship(starship)
-    }
-  
-    getPersonImage = ({ id }) => `${this._imageBase}/characters/${id}.jpg`
-    getStarshipImage = ({ id }) => `${this._imageBase}/starships/${id}.jpg`
-    getPlanetImage = ({ id }) => `${this._imageBase}/planets/${id}.jpg`
-  
-    // private section
-
-    _infoBase = "https://swapi.dev/api"
-    _imageBase = "https://starwars-visualguide.com/assets/img"
-
-    _extractId = item => item.url.match(/\d+/)
-
-    _transormPlanet = planet => {
-        return {
-            id: this._extractId(planet),
-            name: planet.name,
-            population: planet.population,
-            rotationPeriod: planet.rotation_period,
-            diameter: planet.diameter
-        }
-    }
-
-    _transormStarship = starship => {
-        return {
-            id: this._extractId(starship),
-            name: starship.name,
-            model: starship.model,
-            manufacturer: starship.manufacturer,
-            costInCredits: starship.costInCredits,
-            length: starship.length,
-            crew: starship.crew,
-            passengers: starship.passengers,
-            cargoCapacity: starship.cargoCapacity
-        }
-    }
-
-    _transformPerson = person => {
-        return {
-            id: this._extractId(person),
-            name: person.name,
-            gender: person.gender,
-            birthYear: person.birth_year,
-            eyeColor: person.eye_color
-        }
     }
 }

@@ -1,10 +1,10 @@
-import React from 'react'
-import { ServiceConsumer } from '../service-context'
+import React from "react"
+import { ServiceConsumer } from "../service-context"
 
-const withService = mapMethodsToProps => Wrapped => props => (
+const withService = mapProps => Wrapped => props => (
     <ServiceConsumer>{
         service => {
-            const serviceProps = mapMethodsToProps(service)
+            const serviceProps = mapProps(service)
             return <Wrapped {...props} {...serviceProps}/>
         }
     }</ServiceConsumer>

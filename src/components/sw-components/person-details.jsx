@@ -8,9 +8,4 @@ const PersonDetails = props => (
     </ItemDetails>
 )
 
-const mapMethodsToProps = serv => ({
-    getData: serv.getPerson,
-    getImageUrl: serv.getPersonImage
-})
-
-export default withService(mapMethodsToProps)(PersonDetails)
+export default withService(serv => ({ getData: serv.getPerson }))(PersonDetails)

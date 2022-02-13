@@ -9,9 +9,4 @@ const PlanetDetails = props => (
     </ItemDetails>
 )
 
-const mapMethodsToProps = serv => ({
-    getData: serv.getPlanet,
-    getImageUrl: serv.getPlanetImage
-})
-
-export default withService(mapMethodsToProps)(PlanetDetails)
+export default withService(serv => ({ getData: serv.getPlanet }))(PlanetDetails)

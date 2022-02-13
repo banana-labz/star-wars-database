@@ -13,38 +13,28 @@ export { Record }
 
 export default class ItemDetails extends Component {
 
-    state = {
-        item: null,
-        image: null
-    }
+    state = { item: null }
 
     componentDidMount() {
         this.updateItem()
     }
 
     componentDidUpdate(prev) {
-        const idMatch = this.props.itemId === prev.itemId
-        const getDataMatch = this.props.getData === prev.getData
-        const getImageMatch = this.props.getImageUrl === prev.getImageUrl
-        if (!idMatch || !getDataMatch || !getImageMatch) {
+        const { itemId, getData } = this.props
+        if (itemId !== prev.itemId || getData !== prev.getData) {
             this.updateItem()
         }
     }
 
     updateItem() {
-        const { itemId, getData, getImageUrl } = this.props
+        const { itemId, getData } = this.props
         if (!itemId) return
 
-        getData(itemId).then(item =>
-            this.setState({
-                item,
-                image: getImageUrl(item)
-            })
-        )
+        getData(itemId).then(item => this.setState({ item }))
     }
 
     render() {
-        const { item, image } = this.state
+        const { item } = this.state
 
         if (!item) {
             return <span>Select an item</span>
@@ -54,7 +44,7 @@ export default class ItemDetails extends Component {
 
         return (
             <div className="item-details card">
-                <img className="item-image" src={image} alt="item"/>
+                <img className="item-image" src={item.image} alt="item"/>
                 <div className="card-body">
                     <h4>{name}</h4>
                     <ul className="list-group list-group-flush">{

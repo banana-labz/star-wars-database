@@ -9,9 +9,4 @@ const StarshipDetails = props => (
     </ItemDetails>
 )
 
-const mapMethodsToProps = serv => ({
-    getData: serv.getStarship,
-    getImageUrl: serv.getStarshipImage
-})
-
-export default withService(mapMethodsToProps)(StarshipDetails)
+export default withService(serv => ({ getData: serv.getStarship }))(StarshipDetails)

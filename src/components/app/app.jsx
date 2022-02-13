@@ -6,13 +6,14 @@ import ErrorBoundry from "../error-boundry"
 import SwapiService from "../../services/swapi-service"
 import DummyService from "../../services/dummy-service"
 
+/*
 import {
     PeoplePage,
     PlanetsPage,
     StarshipsPage,
     LoginPage,
     SecretPage 
-} from "../pages"
+} from "../pages"*/
 
 import { ServiceProvider } from "../service-context"
 
@@ -24,28 +25,28 @@ import StarshipDetails from "../sw-components/starship-details"
 export default class App extends Component {
 
     state = {
-        swapi: new SwapiService(),
+        service: new SwapiService(),
         isVerified: false
     }
 
     onLogin = () => this.setState({ isVerified: true })
 
-    onServiceChange = () => this.setState(({ swapi }) => {
-        const Service = swapi instanceof SwapiService ? DummyService : SwapiService
-        return { swapi: new Service() }
+    onServiceChange = () => this.setState(({ service }) => {
+        const Service = service instanceof SwapiService ? DummyService : SwapiService
+        return { service: new Service() }
     })
 
     render() {
-        const { isVerified } = this.state
+        const { isVerified, service } = this.state
 
         return (
             <ErrorBoundry>
-                <ServiceProvider value={this.state.swapi}>
+                <ServiceProvider value={service}>
                     <Router>
                         <div className="stardb-app">
                             <Header onServiceChange={this.onServiceChange}/>
                             <RandomPlanet/>
-                            <Switch>
+                            {/*<Switch>
                                 <Route path="/" render={() => <h2>Welcome to Star-DB</h2>} exact/>
                                 <Route path="/people/:id?" component={PeoplePage}/>
                                 <Route path="/planets" component={PlanetsPage}/>
@@ -54,7 +55,7 @@ export default class App extends Component {
                                 <Route path="/login" render={() => <LoginPage isVerified={isVerified} onLogin={this.onLogin}/>}/>
                                 <Route path="/secret" render={() => <SecretPage isVerified={isVerified}/>}/>
                                 <Route render={() => <h2>Page not found</h2>}/>
-                            </Switch>
+                            </Switch>*/}
                         </div>
                     </Router>
                 </ServiceProvider>
