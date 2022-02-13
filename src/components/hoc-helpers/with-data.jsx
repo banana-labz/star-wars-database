@@ -10,9 +10,8 @@ const withData = View => class extends Component {
     }
 
     componentDidUpdate(prevProps) {
-        if (this.props.getData !== prevProps.getData) {
+        if (this.props.getData !== prevProps.getData)
             this.update()
-        }
     }
 
     componentDidMount() {
@@ -25,9 +24,17 @@ const withData = View => class extends Component {
             error: false
         })
 
-        this.props.getData()
-            .then(data => this.setState({ data, loading: false }))
-            .catch(() => this.setState({ error: true, loading: false}))
+        this.props.getData().then(this.onLoaded).catch(this.onError)
+    }
+
+    onLoaded = data => {
+        //console.log(data)
+        this.setState({ data, loading: false })
+    }
+
+    onError = err => {
+        //console.log(err)
+        this.setState({ error: true, loading: false })
     }
 
 
