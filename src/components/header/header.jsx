@@ -8,8 +8,7 @@ const Header = ({ onServiceChange }) => (
             <li><Link to="/people/">People</Link></li>
             <li><Link to="/planets/">Planets</Link></li>
             <li><Link to="/starships/">Starships</Link></li>
-            <li><Link to="/login">Login</Link></li>
-            <li><Link to="/secret">Secret</Link></li>
+            <li><Link to="/login">Log in</Link></li>
         </ul>
 
         <button onClick={onServiceChange} className="btn btn-primary btn-sm">
