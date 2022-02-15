@@ -4,11 +4,10 @@ import Row from "../row"
 
 const PeoplePage = ({ history, match }) => {
     const { id } = match.params
-
     return (
-        <Row 
-            left={<PersonList onItemSelected={id => history.push(id)}/>}
-            right={<PersonDetails itemId={id} />}
+        <Row
+            left={<PersonList onItemSelected={id => history.push(`/people/${id}`)}/>}
+            right={<PersonDetails itemId={id}/>}
         />
     )
 }

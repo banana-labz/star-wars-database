@@ -1,1 +1,13 @@
 *{ margin: 0; padding: 0; border: 0; box-sizing: border-box; }
+
+.stardb-app__background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.stardb-app__container {
+    margin-left: 4%;
+    margin-right: 4%;
+}

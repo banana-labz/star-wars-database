@@ -1,9 +1,9 @@
-import { Redirect } from "react-router-dom"
-
-const SecretPage = ({ isVerified }) => (
-    !isVerified ? <Redirect to="/login"/> :
+const SecretPage = ({ onServiceChange }) => (
     <div className="jumbotron text-center">
-        <h3>Attention!!! Thank you for your attention</h3>
+        <h2>THE secret page</h2>
+        <button onClick={onServiceChange} className="btn btn-primary btn-sm">
+            Change Service
+        </button>
     </div>
 )
 

@@ -37,7 +37,7 @@ export default class ItemDetails extends Component {
         const { item } = this.state
 
         if (!item) {
-            return <span>Select an item</span>
+            return <div/>
         }
 
         const { name } = item

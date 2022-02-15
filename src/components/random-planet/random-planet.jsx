@@ -1,5 +1,9 @@
 import { Component } from "react"
-import { compose, withService, withData } from "../hoc-helpers"
+import { 
+    compose, 
+    withService, 
+    withData 
+} from "../hoc-helpers"
 
 import "./random-planet.css"
 

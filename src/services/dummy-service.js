@@ -57,7 +57,7 @@ export default class DummyService {
     getAllPlanets = async () => this._planets
     getAllStarships = async () => this._starships
 
-    getPerson = async id => this._people[0]
+    getPerson = async id => this._people[0] 
     getPlanet = async id => this._planets[0]
     getStarship = async id => this._starships[0]
 }
