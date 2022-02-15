@@ -1,3 +1,3 @@
 Star Wars Database. Uses ![SWAPI](https://github.com/phalt/swapi)
 Another product of React practice. Looks cool enough to be public.
-![res](https://user-images.githubusercontent.com/63806195/153978633-fa4a40cb-e4dd-4760-98a7-fe12730458a1.gif)
+![smoothoperatooor](https://user-images.githubusercontent.com/63806195/153979168-51b26e81-15d3-4055-93c3-ce46b3c677cd.gif)
