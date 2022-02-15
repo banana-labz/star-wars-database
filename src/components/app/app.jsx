@@ -42,7 +42,7 @@ export default class App extends Component {
                                 <Header/>
                                 <RandomPlanet/>
                                 <Switch>
-                                    <Route path="/" render={() => <h2>Welcome to Star-DB</h2>} exact/>
+                                    <Route path="/" render={() => <h2>Welcome to the Star Wars database. May the force be with you</h2>} exact/>
                                     <Route path="/people/:id?" component={PeoplePage}/>
                                     <Route path="/planets" component={PlanetsPage}/>
                                     <Route path="/starships" exact component={StarshipsPage}/>
