@@ -98,7 +98,7 @@ export default class SwapiService implements IService {
   public fetchPlanets = this.fetchDataArrayFactory<PlanetResponse, IPlanet>("planets", this.formatPlanetResponse)
   public fetchStarships = this.fetchDataArrayFactory<StarshipResponse, IStarship>("starships", this.formatStarshipResponse)
 
-  private fetchDataFactory = <From, To>(url: string, convertData: (data: From) => To) => (i: IBaseEntity['id']) => (
+  private fetchDataFactory = <From, To>(url: string, convertData: (data: From) => To) => (i: IBaseEntity["id"]) => (
     fetch(`${this.apiBase}/${url}/${i}`).then(response => {
       if (!response.ok) {
         throw new Error(this.buildErrorMessage(url, response.status))
