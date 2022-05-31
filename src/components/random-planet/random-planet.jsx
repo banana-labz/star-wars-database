@@ -8,7 +8,7 @@ import {
 import "./random-planet.css"
 
 class RandomPlanet extends Component {
-    static defaultProps = { updateInterval: 10000 }
+    static defaultProps = { updateInterval: 3000 }
 
     componentDidMount() {
         this.interval = setInterval(this.props.getData, this.props.updateInterval)
