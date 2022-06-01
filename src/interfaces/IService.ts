@@ -4,11 +4,11 @@ import IPlanet from "./IPlanet"
 import IStarship from "./IStarship"
 
 export default interface IService {
-  fetchPeople: () => Promise<IPerson[]>
-  fetchPlanets: () => Promise<IPlanet[]>
-  fetchStarships: () => Promise<IStarship[]>
+  getPeople: () => Promise<IPerson[]>
+  getPlanets: () => Promise<IPlanet[]>
+  getStarships: () => Promise<IStarship[]>
 
-  fetchPerson: (id: IBaseEntity["id"]) => Promise<IPerson>
-  fetchPlanet: (id: IBaseEntity["id"]) => Promise<IPlanet>
-  fetchStarship: (id: IBaseEntity["id"]) => Promise<IStarship>
+  getPerson: (id: IBaseEntity["id"]) => Promise<IPerson>
+  getPlanet: (id: IBaseEntity["id"]) => Promise<IPlanet>
+  getStarship: (id: IBaseEntity["id"]) => Promise<IStarship>
 }

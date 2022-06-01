@@ -1,7 +1,5 @@
-import IBaseEntity from "../interfaces/IBaseEntity"
-import IService from "../interfaces/IService"
 
-const dummyPeople = [
+export const people = [
   {
     id: 1,
     image: "https://placeimg.com/400/500/people/1.png",
@@ -20,7 +18,7 @@ const dummyPeople = [
   }
 ]
 
-const dummyPlanets = [
+export const planets = [
   {
     id: 1,
     image: "https://placeimg.com/400/400/nature/1.png",
@@ -39,7 +37,7 @@ const dummyPlanets = [
   }
 ]
 
-const dummyStarship = [
+export const starships = [
   {
     id: 1,
     image: "https://placeimg.com/400/500/tech/1.png",
@@ -53,31 +51,3 @@ const dummyStarship = [
     cargoCapacity: 100,
   }
 ]
-
-export default class DummyService implements IService {
-  private delay = 1337
-
-  private fetchDataArrayFactory = <T>(arr: T[]) => () => (
-    new Promise<T[]>((resolve, reject) => {
-      setTimeout(() => {
-        resolve(arr)
-      }, this.delay)
-    })
-  )
-
-  private fetchDataFactory = <T>(data: T) => (id: IBaseEntity["id"]) => (
-    new Promise<T>((resolve, reject) => {
-      setTimeout(() => {
-        resolve(data)
-      }, this.delay)
-    })
-  )
-
-  public fetchPeople = this.fetchDataArrayFactory(dummyPeople)
-  public fetchPlanets = this.fetchDataArrayFactory(dummyPlanets)
-  public fetchStarships = this.fetchDataArrayFactory(dummyStarship)
-
-  public fetchPerson = this.fetchDataFactory(dummyPeople[0])
-  public fetchPlanet = this.fetchDataFactory(dummyPlanets[0])
-  public fetchStarship = this.fetchDataFactory(dummyStarship[0])
-}
