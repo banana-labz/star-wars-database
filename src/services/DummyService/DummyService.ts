@@ -3,7 +3,11 @@ import IService from "interfaces/IService"
 import requestDataArrayFactory from "./requestDataArrayFactory"
 import requestDataFactory from "./requestDataFactory"
 
-import { people, planets, starships } from "./data"
+import {
+  people,
+  planets,
+  starships,
+} from "./data"
 
 export default class DummyService implements IService {
   public getPeople = requestDataArrayFactory(people)

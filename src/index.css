@@ -1,7 +1,6 @@
 @font-face {
   font-family: "star-jedi";
-  src: url("./assets/fonts/star-jedi/star-jedi.woff2") format("woff2"),
-    url("./assets/fonts/star-jedi/star-jedi.woff") format("woff");
+  src: url("./assets/fonts/star-jedi/star-jedi.woff2") format("woff2"), url("./assets/fonts/star-jedi/star-jedi.woff") format("woff");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -10,6 +9,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+  background-color: #232323;
+}
 
 .title {
   font-family: "star-jedi";

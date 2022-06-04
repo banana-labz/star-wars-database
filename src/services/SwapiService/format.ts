@@ -2,7 +2,11 @@ import IPerson from "interfaces/IPerson"
 import IPlanet from "interfaces/IPlanet"
 import IStarship from "interfaces/IStarship"
 
-import { PersonResponse, PlanetResponse, StarshipResponse } from "./types"
+import {
+  PersonResponse,
+  PlanetResponse,
+  StarshipResponse,
+} from "./types"
 
 const urlExtractId = (url: string) => {
   const matches = url.match(/\d+/)

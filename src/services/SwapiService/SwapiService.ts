@@ -3,7 +3,11 @@ import IService from "interfaces/IService"
 import requestDataArrayFactory from "./requestDataArrayFactory"
 import requestDataFactory from "./requestDataFactory"
 
-import { formatPersonResponse, formatPlanetResponse, formatStarshipResponse } from "./format"
+import {
+  formatPersonResponse,
+  formatPlanetResponse,
+  formatStarshipResponse,
+} from "./format"
 
 export default class SwapiService implements IService {
   public getPeople = requestDataArrayFactory(`${process.env.REACT_APP_API_URL}/people`, formatPersonResponse)
