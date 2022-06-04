@@ -1,9 +1,11 @@
 import React from "react"
 
+import Header from "components/Header"
+
 const App = () => {
   return (
-    <div className="font-bold text-red-600">
-      dev
+    <div className="font-bold">
+      <Header />
     </div>
   )
 }
