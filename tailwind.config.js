@@ -6,6 +6,9 @@ module.exports = {
     "./public/index.html",
   ],
   theme: {
+    colors: {
+      stone: "#2B2B2B"
+    },
     extend: {},
   },
   variants: {
