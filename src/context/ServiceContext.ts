@@ -8,11 +8,9 @@ interface IServiceContext {
   setService: (service: IService) => void
 }
 
-export const initialService: IServiceContext = {
+const ServiceContext = createContext<IServiceContext>({
   service: new SwapiService(),
   setService: () => {},
-}
-
-const ServiceContext = createContext(initialService)
+})
 
 export default ServiceContext
