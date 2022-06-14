@@ -7,22 +7,26 @@ import {
   Navigate,
 } from "react-router-dom"
 
+import { ServiceProvider } from "context/ServiceContext"
+
 import Header from "components/Header"
 import RandomPlanet from "components/RandomPlanet"
-import ServiceProvider from "components/ServiceProvider"
+import ErrorBoundry from "components/ErrorBoundry"
 
 const App = () => (
   <ServiceProvider>
     <BrowserRouter>
-      <Header />
-      <section className="px-8">
-        <RandomPlanet />
-        <Routes>
-          <Route path="/" element={<Navigate to="/home"/>} />
-          <Route path="home" element={<>home</>} />
-          <Route path="error" element={<>error</>} />
-        </Routes>
-      </section>
+      <ErrorBoundry>
+        <Header />
+        <section className="px-14">
+          <RandomPlanet />
+          <Routes>
+            <Route path="/" element={<Navigate to="/home"/>} />
+            <Route path="home" element={<>home</>} />
+            <Route path="error" element={<>error</>} />
+          </Routes>
+        </section>
+      </ErrorBoundry>
     </BrowserRouter>
   </ServiceProvider>
 )

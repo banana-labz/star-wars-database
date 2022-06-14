@@ -8,4 +8,4 @@ const requestDataArrayFactory = <T>(arr: T[]) => () => (
   })
 )
 
-export default requestDataArrayFactory;
+export default requestDataArrayFactory

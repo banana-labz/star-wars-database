@@ -18,3 +18,7 @@ body {
 .title {
   font-family: "star-jedi";
 };
+
+iframe {
+  pointer-events: none;
+}

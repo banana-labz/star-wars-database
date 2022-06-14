@@ -4,7 +4,7 @@ import createError from "./createError"
 
 const requestDataFactory = <From, To>(url: string, convertData: (data: From) => To) => (
   (i: IBaseEntity["id"]) => {
-    const endPoint = `${url}/${i}`
+    const endPoint = `${process.env.REACT_APP_API_URL}/${url}/${i}`
     return (
       fetch(endPoint).then(response => {
         if (!response.ok) {

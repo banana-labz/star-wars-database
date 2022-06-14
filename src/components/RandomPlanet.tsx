@@ -5,7 +5,7 @@ import {
   useState,
 } from "react"
 
-import useService from "hooks/useService"
+import { useService } from "context/ServiceContext"
 
 import IPlanet from "interfaces/IPlanet"
 

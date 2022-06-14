@@ -18,9 +18,9 @@ const basicStyle = {
 }
 
 export type SpinnerProps = {
-  width?: number
-  height?: number
-  className?: React.HTMLAttributes<HTMLDivElement>["className"]
+  width?: number,
+  height?: number,
+  className?: React.HTMLAttributes<HTMLDivElement>["className"],
 }
 
 const Spinner = ({

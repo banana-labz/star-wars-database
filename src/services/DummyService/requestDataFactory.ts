@@ -10,4 +10,4 @@ const fetchDataFactory = <T>(data: T) => (id: IBaseEntity["id"]) => (
   })
 )
 
-export default fetchDataFactory;
+export default fetchDataFactory
